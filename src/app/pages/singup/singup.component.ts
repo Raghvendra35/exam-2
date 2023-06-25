@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-singup',
@@ -8,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class SingupComponent implements OnInit
 {
   
-  constructor(){}
+  constructor(private userService: UserService,
+              private snack: MatSnackBar){}
   
-  public User={
+  public user={
     username:'',
     password:'',
     firstName:'',
@@ -23,6 +27,29 @@ export class SingupComponent implements OnInit
 
   formSubmit()
   {
-   alert("Submit");
+   if(this.user.username=='' || this.user.username==null)
+   {
+    this.snack.open("Username is required !!",'',{
+      duration:3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    })
+   }
+   //Validation others fields here
+   
+
+   this.userService.addUser(this.user).subscribe(
+    (data:any)=>{
+     //alert("Success");
+     Swal.fire('Successfully done !!', 'User id is '+data.id,'success')
+    },(error)=>
+    {
+     console.log(error);
+   this.snack.open("Something went wrong !!", '',{
+    duration:2000
+   })   
+ //  alert('failed');
+    }
+   )
   }
 }

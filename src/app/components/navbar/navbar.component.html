@@ -1,1 +1,22 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary" style="height: 50px;">
+
+    <a routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu_book</mat-icon>
+    </a>
+    <span>Online Test</span>
+
+    <span class="example-spacer"></span>
+    <!-- <a  href="/login"   mat-icon-button class="example-icon favorite-icon" style="margin-right: 40px;" 
+    aria-label="Example icon-button with heart icon">
+      <span style="height: 20px;"></span>
+</a> -->
+<a  routerLink="/login"><span style="text-decoration: none; color: white;" class="mr20">Login</span></a>
+<!--    
+    <a href="/signup"  mat-icon-button class="example-icon favorite-icon" style="margin-right: 50px;" 
+    aria-label="Example icon-button with heart icon">
+    
+</a> -->
+<a  [routerLink]="'/signup'"><span style="text-decoration: none; color: white;">Register</span></a>
+    
+  </mat-toolbar>
+  
