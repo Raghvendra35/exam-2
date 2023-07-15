@@ -11,8 +11,11 @@ export class UserService {
             private http: HttpClient
   ) { }
 
+  //Add user
   public addUser(user: any)
   {
    return this.http.post(`${baseUrl}/user`,user); 
   }
+
+  
 }
