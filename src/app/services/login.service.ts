@@ -7,7 +7,21 @@ import baseUrl from './helper';
 })
 export class LoginService {
 
+
+
   constructor(private http: HttpClient) { }
+
+
+
+
+
+  //Current user:  which is loggedin normal or admin
+  public getCurrentUser()
+  {
+    return this.http.get(`${baseUrl}/current-user`);
+  }
+
+
 
 
   //Generate token
@@ -17,13 +31,19 @@ export class LoginService {
   }
 
 
+
+
+
   //Store token in local storage
   //Login User: Set token in local storage
   public loginUser(token: string)
-  {
+  {       
     localStorage.setItem("token",token);
-    return true;
+    
+     return true;
   }
+
+
 
   // Check user is login or not
   //if return true that's maen user is login
@@ -39,13 +59,18 @@ export class LoginService {
     }
   }
 
+
+
 // Logout : remove token from local Storage
 public logout()
 {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+  localStorage.removeItem("role");
   return true;
 }
+
+
 
 
 //return token , this method will return token from local Storage
@@ -54,13 +79,29 @@ public getToken()
   return localStorage.getItem("token");
 }
 
+// Set Role in local storage
+public setRole(role: string)
+{
+   localStorage.setItem("role", role);
+}
+
+public getRole()
+{
+  return localStorage.getItem("role");
+}
+
+
+
 //and also store UserDetails in localstorage  for not hitting server again-2
 //like username and password
-public setuser(user)
+public setUser(user)
 {
                              //json to string
   localStorage.setItem("user",JSON.stringify(user));
 }
+
+
+
 
 
 //Get User Details
@@ -79,11 +120,15 @@ public getUser()
   }
 
 
+
   //Get User roles or Authority of user
   public getUserRole()
   {
     let user=this.getUser();
   //  return user.authorities[0].Authority;
   }
+
+
+
 }
 

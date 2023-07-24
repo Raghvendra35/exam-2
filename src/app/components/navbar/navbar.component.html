@@ -10,13 +10,15 @@
     aria-label="Example icon-button with heart icon">
       <span style="height: 20px;"></span>
 </a> -->
-<a  routerLink="/login"><span style="text-decoration: none; color: white;" class="mr20">Login</span></a>
+<a *ngIf="!loginService.isLoggedIn()" routerLink="/login"><span style="text-decoration: none; color: white;" class="mr20">Login</span></a>
 <!--    
     <a href="/signup"  mat-icon-button class="example-icon favorite-icon" style="margin-right: 50px;" 
     aria-label="Example icon-button with heart icon">
     
 </a> -->
-<a  [routerLink]="'/signup'"><span style="text-decoration: none; color: white;">Register</span></a>
-    
+<a  *ngIf="!loginService.isLoggedIn()" [routerLink]="'/signup'"><span style="text-decoration: none; color: white;">Register</span></a>
+
+
+<a  *ngIf="loginService.isLoggedIn()"  routerLink="/login"><span style="text-decoration: none; color: white;" class="mr20" (click)="logOut()">Logout</span></a>  
   </mat-toolbar>
   
