@@ -1,2 +1,22 @@
-<h1>Welcome to Normal Admin Dashboard</h1>
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+           
+            <div class="col-md-2">
+             <!-- <h3>Menu</h3> this is a menu area-->
+             <app-sidebar></app-sidebar>
+            </div>
+           
+           
+            <div class="col md-10">
+                <!-- <h3>Content</h3> this Content Area mean Body Area -->
+                <router-outlet></router-outlet>
+                <!-- Here We are using router-outlet becaouse dynamic component which component will be load that will be child component -->
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
