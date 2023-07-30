@@ -18,7 +18,7 @@ export class LoginService {
   //Current user:  which is loggedin normal or admin
   public getCurrentUser()
   {
-    return this.http.get(`${baseUrl}/current-user`);
+    return this.http.get(`${baseUrl}/api/current-user`);
   }
 
 
@@ -27,9 +27,14 @@ export class LoginService {
   //Generate token
   public generateToken(loginData: any)
   {
-      return this.http.post(`${baseUrl}/generate-token`,loginData);
+      return this.http.post(`${baseUrl}/api/generate-token`,loginData);
   }
 
+//Get User Details which is login
+public getUserDetails(username:String)
+{
+  return this.http.get(`${baseUrl}/api/username/${username}`);
+}
 
 
 
@@ -79,6 +84,8 @@ public getToken()
   return localStorage.getItem("token");
 }
 
+
+
 // Set Role in local storage
 public setRole(role: string)
 {
@@ -98,6 +105,7 @@ public setUser(user)
 {
                              //json to string
   localStorage.setItem("user",JSON.stringify(user));
+// localStorage.setItem("user",user);
 }
 
 
@@ -107,7 +115,9 @@ public setUser(user)
 //Get User Details
 public getUser()
 {
-  let userStr=localStorage.getItem("user");
+
+ 
+ let userStr=localStorage.getItem("user");
   if(userStr!=null) //user is  not null
   {
    return JSON.stringify(userStr);
@@ -128,7 +138,16 @@ public getUser()
   //  return user.authorities[0].Authority;
   }
 
-
+//Set username
+public setUsername(username: string)
+{
+   localStorage.setItem("username", username);
+}
+//Get username from localstorage
+public getUsername()
+{
+  return localStorage.getItem("username");
+}
 
 }
 

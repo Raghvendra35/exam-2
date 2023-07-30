@@ -1,7 +1,9 @@
 
 
-<mat-card>
+<mat-card  *ngIf="user">
     <h2>Your Profile Details</h2>
+   
+    
     <mat-card-content>
      <div class="bootstrap-wraaper">
         <div class="container">
@@ -10,44 +12,45 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRbiMjUoOxJCAMB9poSO2wLg34m7OxmyaT-A&usqp=CAU" 
                 alt="" class="profile-image"/>
 
-                <h2 class="mt20">Raghvendra</h2>
+                <h2 class="mt20">{{user.firstName}}{{user.lastName}}</h2>
             </div>
             
             <div class="row">
-
-                <div class="col-md-10 offser-md-1 ">
+             
+                <div class="col-md-10 offser-md-1" style="margin-left: 110px;">
                       <!-- table Details -->
-                 <table class="table text-center">
+                 <table class="table">
                     <tr >
                         <td>Username</td>
-                        <td>Raghav123</td>
+                        <td>{{user.username}}</td>
                     </tr>
                     <tr >
                         <td>Userid</td>
-                        <td>Raghav123</td>
+                        <td>{{user.userId}}</td>
                     </tr>
                     <tr >
                         <td>Phone</td>
-                        <td>1234567896</td>
+                        <td>{{user.phone}}</td>
                     </tr>
                     <tr >
                         <td>Role</td>
-                        <td>Admin</td>
+                        <td>{{user.userRole}}</td>
                     </tr>
                     <tr >
                         <td>Status</td>
-                        <td>Active</td>
+                        <td>{{user.enabled? "Active":"Not Active"}}</td>
                     </tr>
                  </table>
                 </div>
 
             </div>
+            </div>
         </div>
-     </div>   
+      
      
-     <mat-card-actions class="text-center">
+     <mat-card-actions style="margin-left: 350px;">
      <button mat-raised-button color="primary">Update</button>
-     <button mat-raised-button color="accent">Delete</button>
+     <button mat-raised-button color="accent" style="margin-left: 150px;">Delete</button>
      </mat-card-actions>
     </mat-card-content>
 </mat-card>

@@ -64,9 +64,14 @@ export class LoginComponent implements OnInit
      
 
     //Login 
-    this.loginService.loginUser(data.token);
+      this.loginService.loginUser(data.token);
       this.loginService.setRole(data.role);
-    
+      this.loginService.setUser(data.user);
+      this.loginService.setUsername(data.username);
+      console.log('login user..........................');
+      console.log(data.username);
+      
+      
     
 
    
