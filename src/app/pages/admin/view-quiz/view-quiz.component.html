@@ -23,21 +23,26 @@
 
    
     <div>
-  <button mat-flat-button color="primary" style="width: 100px; margin-top: 10px;">
+  <button mat-flat-button color="primary" style="width: 100px;"class="set-design">
             Question
         </button>
-        <button mat-stroked-button color="primary" style="width: 150px; margin-top: 10px;" class="ml20">
+        <button mat-stroked-button color="primary" style="width: 150px;" class="ml20" class="set-design">
             Max Mark : {{q.maxMarks}}
         </button>
 
-        <button mat-stroked-button color="primary" style="width: 230px; margin-top: 10px;" class="ml20">
-            Number of questions : {{q.maxMarks}}
+        <button mat-stroked-button color="primary" style="width: 230px;" class="ml20" class="set-design">
+            Number of questions : {{q.numberOfQuestions}}
         </button>  
-        <button mat-stroked-button color="primary" style="width: 130px; margin-top: 10px;" class="ml20">
+        <button mat-stroked-button color="primary" style="width: 130px;" class="ml20" class="set-design">
            Attempted
         </button>
-        <button mat-flat-button color="primary" style="width: 130px; margin-top: 10px;" class="ml20">
+        <button mat-flat-button color="primary" style="width: 130px;" class="ml20" class="set-design">
             Update
+        </button>
+
+        <button mat-flat-button color="warn" style="width: 130px;" class="ml20" class="set-design" (click)="
+        deleteQuiz(q.quizId)">
+           Delete
         </button>
 </div>
 </mat-card>

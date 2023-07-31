@@ -40,4 +40,40 @@ export class ViewQuizComponent implements OnInit
 
        }
 
+
+       //Delete Quiz
+       deleteQuiz(quizId: any)
+       {
+      console.log("Printing quiz id....................");
+      console.log(quizId);
+      Swal.fire({
+        icon:'info',
+        'title':"Are you sure ?",
+        confirmButtonText:'Delete',
+        showCancelButton: true
+      }).then((result)=>
+      {
+        if(result.isConfirmed)
+        {
+
+          this.quizService.deleteSingleQuiz(quizId).subscribe((data)=>
+          {
+    
+            //when we delete the quiz then quiz will remove when we refresh the page 
+            //So we are using filter which current and database id will not that will be delete
+          this.quizzes=this.quizzes.filter((quiz)=>quiz.quizId!=quizId);
+           
+          Swal.fire("Success",'Quiz deleted successfuly !!!','success');
+            
+          },(error)=>
+          {
+            console.log(error);
+            Swal.fire('Error !!','Error in deleting quiz.','error')
+            
+          })
+        }
+      })
+
+      
+       }
 }
