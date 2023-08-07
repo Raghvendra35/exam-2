@@ -22,4 +22,10 @@ export class QuestionService
   {
    return this.http.post(`${baseUrl}/api/question`, question);
   }
+
+  //delete Question
+  public deleteQuestion(questionId: any)
+  {
+    return this.http.delete(`${baseUrl}/api/question/${questionId}`);
+  }
 }

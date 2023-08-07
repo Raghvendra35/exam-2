@@ -23,7 +23,7 @@
                             name="content"
                             matInput placeholder="Enter Here"
                             rows="4"
-                            ></textarea>
+                            required></textarea>
                           </mat-form-field>
 
                           <!-- Options -->
@@ -33,14 +33,14 @@
                    <mat-form-field class="w100">
                     
                     <mat-label>Enter Option One</mat-label>
-                    <input type="text" [(ngModel)]="question.option1" name="option1" matInput/>
+                    <input type="text" [(ngModel)]="question.option1" name="option1" required matInput/>
                     </mat-form-field>
                 </div>
 
                     <div class="col-md-6">
                     <mat-form-field class="w100">
                     <mat-label>Enter Option Two</mat-label>
-                     <input type="text" [(ngModel)]="question.option2" name="option2" matInput/>
+                     <input type="text" [(ngModel)]="question.option2" name="option2" required matInput/>
                      </mat-form-field>
                      </div>
 
@@ -70,7 +70,7 @@
                     <!-- answer -->
                     <mat-form-field class="w100">
                      <mat-label>Select Answer</mat-label>
-                     <mat-select [(ngModel)]="question.answer" name="answer">
+                     <mat-select [(ngModel)]="question.answer" name="answer" required>
                       <mat-option  *ngIf="question.option1" [value]="question.option1">{{question.option1}}</mat-option>
                       <mat-option  *ngIf="question.option2" [value]="question.option2">{{question.option2}}</mat-option>
                       <mat-option  *ngIf="question.option3" [value]="question.option3">{{question.option3}}</mat-option>

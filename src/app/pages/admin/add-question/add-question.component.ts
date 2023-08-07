@@ -45,10 +45,36 @@ export class AddQuestionComponent implements OnInit
   formSubmit()
   {
     //Validation
+    if(this.question.content.trim()==''|| this.question.content==null)
+    {
+       return
+    }
+
+    if(this.question.option1.trim()==''|| this.question.option1==null)
+    {
+       return
+    }
+
+    if(this.question.option2.trim()==''|| this.question.option2==null)
+    {
+       return
+    }
+
+    if(this.question.answer.trim()==''|| this.question.answer==null)
+    {
+       return
+    }
+
 
      this.questionService.addQuestion(this.question).subscribe((data: any)=>
      {
-      Swal.fire('Success','Quiz updated successfuly','success')
+      Swal.fire('Success','Questiom added successfuly','success');
+      this.question.content='';
+      this.question.option2='';
+      this.question.option3='';
+      this.question.option4='';
+      this.question.answer='';
+
      },(error)=>
      {
       Swal.fire('Error','Error Or something went wrong !!','error')
