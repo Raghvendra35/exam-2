@@ -11,6 +11,7 @@ export class ViewQuizComponent implements OnInit
  {
 
   quizzes:any;
+   qId: any;
 
   constructor(private quizService: QuizService){}
 

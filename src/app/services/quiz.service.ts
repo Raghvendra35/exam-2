@@ -26,4 +26,16 @@ export class QuizService {
   {
    return this.http.delete(`${baseUrl}/api/quiz/${quizId}`);
   }
+
+  //Get Single Quiz
+  public getSinleQuiz(quizId: number)
+  {
+     return this.http.get(`${baseUrl}/api/quiz/${quizId}`)
+  }
+
+  //update quiz
+  public updateQuiz(quiz)
+  {
+    return this.http.put(`${baseUrl}/api/quiz`,quiz);
+  } 
 }

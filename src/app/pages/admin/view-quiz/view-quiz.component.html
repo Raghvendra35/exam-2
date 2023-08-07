@@ -23,9 +23,12 @@
 
    
     <div>
-  <button mat-flat-button color="primary" style="width: 100px;"class="set-design">
+       <button 
+        [routerLink]="'/admin/view-questions/'+q.quizId+'/'+q.title"
+       mat-flat-button color="primary" style="width: 100px;"class="set-design">
             Question
         </button>
+        
         <button mat-stroked-button color="primary" style="width: 150px;" class="ml20" class="set-design">
             Max Mark : {{q.maxMarks}}
         </button>
@@ -33,17 +36,13 @@
         <button mat-stroked-button color="primary" style="width: 230px;" class="ml20" class="set-design">
             Number of questions : {{q.numberOfQuestions}}
         </button>  
-        <button mat-stroked-button color="primary" style="width: 130px;" class="ml20" class="set-design">
-           Attempted
-        </button>
-        <button mat-flat-button color="primary" style="width: 130px;" class="ml20" class="set-design">
-            Update
-        </button>
+        
+        
+        <button mat-stroked-button color="primary" style="width: 130px;" class="ml20" class="set-design">Attempted</button>
+       
+        <button [routerLink]="'/admin/quiz/'+ q.quizId" mat-flat-button color="primary" style="width: 130px;" class="ml20" class="set-design">Update</button>
 
-        <button mat-flat-button color="warn" style="width: 130px;" class="ml20" class="set-design" (click)="
-        deleteQuiz(q.quizId)">
-           Delete
-        </button>
+        <button mat-flat-button color="warn" style="width: 130px;" class="ml20" class="set-design" (click)="deleteQuiz(q.quizId)">Delete</button>
 </div>
 </mat-card>
 
