@@ -19,13 +19,16 @@ export class LoadQuizComponent implements OnInit
 
   ngOnInit(): void
    {
-    this.categoryId=this.route.snapshot.params['catId'];
-    //alert(this.categoryId)
-  
+   // this.categoryId=this.route.snapshot.params['catId'];
+    
+   this.route.params.subscribe((params)=>
+   {
+    this.categoryId=params['catId'];
+
     if(this.categoryId==0)
     {
       //then we have to load all quiz
-      this.quizService.quizzes().subscribe((data:any)=>
+      this.quizService.getActiveQuiz().subscribe((data:any)=>
       {
         console.log(data);
         this.quizzes=data;
@@ -33,7 +36,14 @@ export class LoadQuizComponent implements OnInit
    
     }else{
       //load specific quiz
+      this.quizService.getActiveQuizzesOfCategory(this.categoryId).subscribe((data:any)=>
+      {
+        this.quizzes=data;
+      })
     }
+   })
+  
+
   }
 
 }
