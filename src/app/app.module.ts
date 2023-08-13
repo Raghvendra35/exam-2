@@ -35,7 +35,15 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 
 import { ViewQuizQuestionComponent } from './pages/admin/view-quiz-question/view-quiz-question.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
+import { SidebarComponent as UserSidebar } from './pages/user/sidebar/sidebar.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -58,7 +66,11 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     UpdateQuizComponent,
 
     ViewQuizQuestionComponent,
-      AddQuestionComponent
+      AddQuestionComponent,
+      UserSidebar,
+      LoadQuizComponent,
+      InstructionsComponent,
+      StartComponent
     
 
   ],
@@ -77,7 +89,16 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    CKEditorModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot(
+      {
+        showForeground: true
+      }
+    )
+    
     
   ],
   providers: [AuthInterceptorProviders],

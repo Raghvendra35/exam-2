@@ -17,6 +17,12 @@ export class QuestionService
   }
 
 
+  public getQuestionOfQuizForTest(qId)
+  {
+    return this.http.get(`${baseUrl}/api/question/quiz/${qId}`);
+  }
+
+
   //Add Question
   public addQuestion(question)
   {
@@ -28,4 +34,6 @@ export class QuestionService
   {
     return this.http.delete(`${baseUrl}/api/question/${questionId}`);
   }
+
+  //
 }

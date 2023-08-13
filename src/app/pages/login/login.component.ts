@@ -101,7 +101,7 @@ export class LoginComponent implements OnInit
     }else if(data.role=="Normal")
     {
      //User Dashboard
-     this.router.navigate(['/user-dashboard']); 
+     this.router.navigate(['/user-dashboard/0']); 
 
     }else{
       this.loginService.logout();

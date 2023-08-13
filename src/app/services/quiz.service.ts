@@ -37,5 +37,23 @@ export class QuizService {
   public updateQuiz(quiz)
   {
     return this.http.put(`${baseUrl}/api/quiz`,quiz);
-  } 
+  }
+  
+  //Get quizzes of category
+  public getQuizzesOfCategory(catergoryId)
+  {
+    return this.http.get(`${baseUrl}/api/categorysingle/${catergoryId}`)
+  }
+
+  //Get Active Quizzes
+  public getActiveQuiz()
+  {
+    return this.http.get(`${baseUrl}/api/quiz/active`);
+  }
+
+  //Get Active Quizzes of category
+  public getActiveQuizzesOfCategory(categoryId)
+  {
+     return this.http.get(`${baseUrl}/api/quiz/category/active/${categoryId}`);
+  }
 }
