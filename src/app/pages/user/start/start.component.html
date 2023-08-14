@@ -4,8 +4,14 @@
             
             <div class="col-md-2">
             <!-- instructions -->
-            <h3>Instructions</h3>
-          
+            <mat-card style="margin-top: 67px;">
+            <h3><b>Instructions</b></h3>
+            <ul>
+                <li>Do not refresh the page otherwise you will get new questions in this quiz.</li>
+                <li>Do not switch the tap.</li>
+                 <li>Do not minimize the window.</li>
+          </ul>
+         </mat-card>          
             </div>
            
            
@@ -13,7 +19,7 @@
            <!-- questions -->
            <ng-container *ngIf="questions">
           
-               <h2 class="mt20">On Going Test {{questions[0].quiz.title}}</h2>
+               <h2 class="mt20">On Going Test <b>{{questions[0].quiz.title}}</b></h2>
           
            </ng-container>
 
@@ -26,10 +32,10 @@
 
                 <div class="col-md-6">
                     <input 
-                    [(ngModel)]="q.givenAnswer"
+                    [(ngModel)]="q.option1"
                     type="radio" 
                     value="q.option1" 
-                     name="{{i}}"
+                     name="i"
                       /> {{q.option1}}  
                 </div>
 
@@ -106,7 +112,7 @@
         <mat-card-actions >
           <div class="container text-center mt20">
             <button mat-raised-button style="margin-right: 10px;" color="primary" [routerLink]="'/user-dashboard/0'">Home</button>
-            <button mat-raised-button color="accent" >Print Result</button>
+            <button mat-raised-button color="accent" (click)="printPage()">Print Result</button>
             
            </div>
         </mat-card-actions>

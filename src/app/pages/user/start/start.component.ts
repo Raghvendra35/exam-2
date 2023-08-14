@@ -56,10 +56,11 @@ constructor(private locationStategy: LocationStrategy,
       this.timer=this.questions.length*2*60;
 
     
-      this.questions.forEach((q) => 
-        {
-          q['givenAnswer']='';
-      });
+      // this.questions.forEach((q) => 
+      //   {
+      //     q['givenAnswer']='';
+      // });
+      
       console.log(this.questions);
        this.startTimer();
 
@@ -84,14 +85,7 @@ constructor(private locationStategy: LocationStrategy,
        {
         //Calculation   
           this.evalQuiz();
-
-          console.log("correct ans.."+this.correctAnswers);
-          console.log("marksGot...."+this.marksGot);
-          console.log("Attempted.."+this.attempted);
-          
-          
-
-      } 
+        } 
     })
   }
 
@@ -121,21 +115,52 @@ getFormattedTime()
 //this method for not asking do you want to submit test when time will complete
 evalQuiz()
 {
-  this.isSubmit=true; 
-        this.questions.forEach(q=>
-          {
-            if(q.givenAnswer==q.answer)
-            {
-              this.correctAnswers++;
-            let markSingle=this.questions[0].quiz.maxMarks/this.questions.length;
-            this.marksGot+=markSingle;
-            }
-            if(q.givenAnswer.trim()!='')
-            {
-              this.attempted++;
-            }
+  
+   // Call to server
+
+   this.questionService.evalQuiz(this.questions).subscribe((data:any)=>
+   {
+    console.log("lllllllllllllllllllllllllllllllll");
+    
+
+
+    console.log(data.Attempted);
+    this.marksGot=parseFloat(Number(data.marksGot).toFixed(2)) ;
+    this.correctAnswers=data.correctAnswers;
+    this.attempted=data.attempted;
+    this.isSubmit=true; 
+
+   },(error)=>
+   {
+    console.log(error);
+    
+   })
+
+
+        // this.questions.forEach(q=>
+        //   {
+        //     if(q.givenAnswer==q.answer)
+        //     {
+        //       this.correctAnswers++;
+        //     let markSingle=this.questions[0].quiz.maxMarks/this.questions.length;
+        //     this.marksGot+=markSingle;
+        //     }
+        //     if(q.givenAnswer.trim()!='')
+        //     {
+        //       this.attempted++;
+        //     }
                      
            
-          }) 
+        //   }) 
+
+        //   console.log("correct ans.."+this.correctAnswers);
+        //   console.log("marksGot...."+this.marksGot);
+        //   console.log("Attempted.."+this.attempted);
+}
+
+
+printPage()
+{
+  window.print();
 }
 }
